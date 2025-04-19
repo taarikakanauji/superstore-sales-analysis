@@ -1,0 +1,74 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 377,
+            "y": 352.75
+          },
+          "nodeIndex": "Orders",
+          "nodeLineageTag": "aeb14bb1-8431-4c6f-97e1-d696cd52880a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 12,
+            "y": 0
+          },
+          "nodeIndex": "People",
+          "nodeLineageTag": "ce532502-0f2d-4423-b340-6ba372745f5f",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 724,
+            "y": 0
+          },
+          "nodeIndex": "Returns",
+          "nodeLineageTag": "e84f8d46-e1f0-4e8b-9975-3fd6a58d28ef",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 918,
+            "y": 244.25
+          },
+          "nodeIndex": "Measure group",
+          "nodeLineageTag": "c1a3b2f9-b39e-4d06-a12a-88dabc40dd65",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}
