@@ -211,7 +211,7 @@ Below is my step-by-step approach to creating this dashboard in Power BI:
 
   To ensure a clean and professional design, I utilized dropdown-style slicers that apply to all visuals within the report. This configuration empowers stakeholders to easily compare trends over different time periods or evaluate performance across various regions with minimal effort.
 
-- Step 12: To improve the usability and interactivity of the Power BI report, I added a Reset Filters icon that enables users to quickly clear all selections and revert the report to its original default view. This feature enhances user confidence by making it easy to undo any filter changes, providing more flexibility and a smoother experience.
+- Step 13: To improve the usability and interactivity of the Power BI report, I added a Reset Filters icon that enables users to quickly clear all selections and revert the report to its original default view. This feature enhances user confidence by making it easy to undo any filter changes, providing more flexibility and a smoother experience.
 
   First, I inserted a reset or refresh icon using the Insert > Image option and positioned it to the left of the filter icon.
 
@@ -222,11 +222,11 @@ Below is my step-by-step approach to creating this dashboard in Power BI:
 
 # Snapshot of Report (Power BI Service)
 
- ![Power BI Service - Full View](![Power BI Service View](https://github.com/taarikakanauji/superstore-sales-analysis/raw/main/images/Power-Bi-service-full.jpg))
+![Power BI Service View](https://github.com/taarikakanauji/superstore-sales-analysis/raw/main/images/Power-Bi-service-full.jpg)
 
 # Report Snapshot (Power BI DESKTOP)
 
-  ![Power BI Report - Full Home](![Full Power BI Report](https://github.com/taarikakanauji/superstore-sales-analysis/raw/main/images/Power-Bi-report-full.jpg))
+ ![Full Power BI Report](https://github.com/taarikakanauji/superstore-sales-analysis/raw/main/images/Power-Bi-report-full.jpg)
 
 
 # **Project Resources: Superstore Sales Analysis**  
