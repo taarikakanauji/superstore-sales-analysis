@@ -1,0 +1,88 @@
+createOrReplace
+
+	table 'Measure group'
+		lineageTag: c1a3b2f9-b39e-4d06-a12a-88dabc40dd65
+
+		measure 'Maximum sale' = MAX(Orders[Sales])
+			formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+			lineageTag: fc2ac03b-b23d-426d-95f2-71a92d08c937
+
+			annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+		measure 'Number of customers' = DISTINCTCOUNT(Orders[Customer ID])
+			formatString: 0
+			lineageTag: a9970a5f-f73e-49c2-936f-286428a8e430
+
+		measure 'Number of orders' = COUNT(Orders[Order ID])
+			formatString: 0
+			lineageTag: e1742ea6-b972-43c6-88a9-711c36a30aa9
+
+		measure 'Total sales' = SUM(Orders[Sales])
+			formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+			lineageTag: d0bdf563-a5d7-4101-87f8-45339dbebe02
+
+			annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+		measure 'Total profits' = SUM(Orders[Profit])
+			formatString: \$#,0;(\$#,0);\$#,0
+			lineageTag: b2739892-846d-46c8-b9ca-f9b48559b295
+
+		measure 'Average sales' = AVERAGE(Orders[Sales])
+			formatString: \$#,0;(\$#,0);\$#,0
+			lineageTag: 6bd0b47b-b9a6-49b2-9d42-e2192e5bb125
+
+		measure 'Max Date' = MAX(Orders[Order Date])
+			formatString: General Date
+			lineageTag: 48d79787-79cd-4232-a75b-835335279164
+
+		measure 'Max Sales' = MAX(Orders[Sales])
+			lineageTag: b2aff891-17b7-4485-9f1a-cff41d7cf212
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		measure 'Min Date' = MIN(Orders[Order Date])
+			formatString: General Date
+			lineageTag: 01df17c9-8679-42cd-a8c3-4243bba3719a
+
+		measure 'Min Sales' = MIN(Orders[Sales])
+			lineageTag: 294a473f-af1b-4c11-88ac-83afa45755a8
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		measure 'Previous Quantity' =
+				CALCULATE(SUM(Orders[Quantity]),
+				DATEADD(Orders[Order Date].[Date],-1,YEAR))
+			formatString: 0
+			lineageTag: 5d90dbc4-ef12-4be2-8a1d-57aef6fd8604
+
+		measure 'Previous year sales' =
+				CALCULATE(
+				    SUM(Orders[Sales]),DATEADD(Orders[Order Date].[Date],-1,YEAR))
+			lineageTag: af1cc7cd-fab7-4720-8b6b-1839a55a0869
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		measure 'Quantity YoY %' = DIVIDE(SUM(Orders[Quantity]) -[Previous Quantity], [Previous Quantity])
+			formatString: 0.00%;-0.00%;0.00%
+			lineageTag: f691c26b-71a6-4212-9a5c-bf7a1bd1408d
+
+		measure 'Total Quantity' = SUM(Orders[Quantity])
+			formatString: 0
+			lineageTag: 49c5c769-00c0-44ed-824f-de69546516f0
+
+		measure 'Sales YoY %' = DIVIDE(SUM(Orders[Sales]) - [Previous year sales], [Previous year sales])
+			formatString: 0.00%;-0.00%;0.00%
+			lineageTag: 10fe6850-9955-44cf-9784-5847d71f7ef4
+
+		partition 'Measure group' = m
+			mode: import
+			source =
+					let
+					    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+					    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+					    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+					in
+					    #"Removed Columns"
+
+		annotation PBI_ResultType = Table
+

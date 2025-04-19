@@ -1,0 +1,34 @@
+table People
+	lineageTag: ce532502-0f2d-4423-b340-6ba372745f5f
+
+	column Person
+		dataType: string
+		lineageTag: c426280a-c804-48b3-a1a9-3401334b9712
+		summarizeBy: none
+		sourceColumn: Person
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: 4e91ac3c-c142-44cd-8c0e-816dbd02969d
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	partition People = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("E:\TRAINING-BI\Assignment\resource\People.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Person", type text}, {"State", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

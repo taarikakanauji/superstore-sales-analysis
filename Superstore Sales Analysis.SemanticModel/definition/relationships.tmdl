@@ -1,0 +1,20 @@
+relationship 8e40b6ae-801c-466d-9e35-fdfc2cf39e4e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Orders.'Order Date'
+	toColumn: LocalDateTable_42867817-8168-4ff8-9be6-cdd9ce226b98.Date
+
+relationship 1ba7772b-1188-4713-8668-49d1a67c5f68
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Orders.'Ship Date'
+	toColumn: LocalDateTable_21218824-d1ef-4f1f-b43e-82e1913f855c.Date
+
+relationship fd1e8be9-8c6b-502a-ba70-adf92148a2a0
+	fromColumn: Orders.'Order ID'
+	toColumn: Returns.'Order ID'
+
+relationship 1fbc0403-161d-9b6c-df87-d3985dbd6c75
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: People.State
+	toColumn: Orders.State
+
